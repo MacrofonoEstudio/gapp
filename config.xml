@@ -16,4 +16,11 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+
+  <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+        <param name="APP_ID" value="1570739009810940" />
+        <param name="APP_NAME" value="GaritoApp" />
+  </gap:plugin>
+
+
 </widget>
