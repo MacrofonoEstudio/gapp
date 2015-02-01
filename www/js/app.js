@@ -17,3 +17,10 @@ app.run(function($ionicPlatform) {
     }
   });
 })
+
+app.config(
+  function($cordovaFacebookProvider) {
+  var appID = 1570739009810940;
+  var version = ""; // or leave blank and default is v2.0
+  $cordovaFacebookProvider.browserInit(appID, version);
+  });
