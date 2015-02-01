@@ -35,12 +35,17 @@
             </button>
           </ion-nav-buttons>
         </ion-nav-bar>
-        <ion-nav-view name="menuContent" ng-controler="FbCtrl">
+        <ion-nav-view name="menuContent" ng-controler="usersCtrl">
          <p>Facebookkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
          <p>Facebookkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p> 
          <p>Facebookkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
          <button class="button button-icon button-clear ion-navicon" ng-click="facebookLogin()">
-         </button>      
+         </button>
+         <ul>
+          <li ng-repeat="user in users">
+          {{user.name}}
+          </li>
+         </ul>  
         </ion-nav-view>
       </ion-side-menu-content>
 
