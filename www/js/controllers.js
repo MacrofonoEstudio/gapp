@@ -20,5 +20,6 @@ gcontrollers.controller('FbCtrl', function($scope, $cordovaFacebook) {
       }, function (error) {
         console.log("Error!!!!");
       });
-  };    
+  };
+   
 });    
