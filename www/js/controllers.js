@@ -8,19 +8,21 @@ gcontrollers.controller('usersCtrl', function($scope, $http) {
 });
 
 
-gcontrollers.controller('FbCtrl', function($scope, $cordovaFacebook) {
+gcontrollers.controller('FbCtrl', function($scope, $ionicPlatform, $cordovaFacebook) {
+  
+  $ionicPlatform.ready(function() {
+    $scope.facebookLogin = function() {
+      $cordovaFacebook.login(["public_profile", "email", "user_friends"])
+        .then(function(success) {
 
-  $scope.facebookLogin = function() {
-    $cordovaFacebook.login(["public_profile", "email", "user_friends"])
-      .then(function(success) {
+            var user = success;
+            console.log(user.name);
+            alert(user);
 
-          var user = success;
-          console.log(user.name);
-          alert(user);
-
-      }, function (error) {
-        console.log("Error!!!!");
-      });
-  };
+        }, function (error) {
+          console.log("Error!!!!");
+        });
+    };
+  });  
 
 });    
