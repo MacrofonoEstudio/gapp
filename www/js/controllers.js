@@ -16,10 +16,11 @@ gcontrollers.controller('FbCtrl', function($scope, $cordovaFacebook) {
 
           var user = success;
           console.log(user.name);
+          alert(user);
 
       }, function (error) {
         console.log("Error!!!!");
       });
   };
-   
+
 });    
