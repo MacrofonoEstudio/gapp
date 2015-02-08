@@ -1,1 +1,30 @@
 /* Empty. Add your own CSS if you like */
+.bar.bar-assertive {
+    border-color: #2f251e;
+    background-color: #2f251e;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #FFFFFF; }
+
+.bar-assertive .button {
+  border-color: #442915;
+  background-color: #2f251e;
+  color: #fff; }
+  .bar-assertive .button:hover {
+    color: #fff;
+    background-color: #442915;
+    text-decoration: none; }
+  .bar-assertive .button.active, .bar-assertive .button.activated {
+    border-color: #2f251e;
+    background-color: #2f251e;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+  .bar-assertive .button.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 17px; }
+  .bar-assertive .button.button-icon {
+    border-color: transparent;
+    background: none; }
+
+/* #442915 */
