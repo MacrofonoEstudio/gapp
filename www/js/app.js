@@ -22,6 +22,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
 
+  .state('home', {
+    url: "/",
+    templateUrl: "templates/login.html"
+  })
+
   .state('app', {
     url: "/app",
     abstract: true,
@@ -32,5 +37,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
   
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/sessions');
+  $urlRouterProvider.otherwise('/');
 });
