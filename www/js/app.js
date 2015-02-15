@@ -20,24 +20,30 @@ app.run(function($ionicPlatform, $cordovaFacebook) {
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider
-
-  
+  $stateProvider  
 
   .state('app', {
     url: "/app",
     abstract: true,
-    templateUrl: "index.html"
+    templateUrl: "templates/menu.html"
   })
 
   .state('app.home', {
     url: "/home",
-    templateUrl: "templates/login.html"
+    views: {
+      'menuContent': {
+        templateUrl: "templates/login.html"
+      }
+    }
   })
 
   .state('app.detail', {
     url: "/detail",
-    templateUrl: "templates/detail.html"
+    views: {
+      'menuContent': {
+        templateUrl: "templates/detail.html"
+      }
+    }
   });
 
 
