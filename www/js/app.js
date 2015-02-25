@@ -25,30 +25,23 @@ app.config(function($stateProvider, $urlRouterProvider) {
   .state('app', {
     url: "/app",
     abstract: true,
-    templateUrl: "templates/menu.html"
+    templateUrl: "templates/menu.html",
+    controller: "usersCtrl"
   })
 
   .state('app.home', {
     url: "/home",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/login.html"
-      }
-    }
+    templateUrl: "templates/login.html"
   })
 
   .state('app.detail', {
     url: "/detail",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/detail.html"
-      }
-    }
+    templateUrl: "templates/detail.html"
   });
 
 
   
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app');
+  $urlRouterProvider.otherwise('/app/home');
 });
