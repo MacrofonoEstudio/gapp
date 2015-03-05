@@ -11,14 +11,13 @@ app.run(function($ionicPlatform, $cordovaFacebook) {
     // for form inputs)
     alert('Ionic Ready');
 
-
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
   });
 });
 
-app.config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
 
 
 

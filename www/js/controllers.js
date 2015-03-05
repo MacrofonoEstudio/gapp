@@ -23,20 +23,20 @@ gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $co
             alert("authResponse.name "+user.authResponse.name);
             userId = user.authResponse.userID;
             alert("authResponse.email "+user.authResponse.email);
+            $cordovaFacebook.api(userId + "/?fields=id,email", ["user_birthday"],
+                  function (result) {
+                      alert("Result: " + result);
+                      alert("Email2: " + result.email);
+                  },
+                  function (error) {
+                      alert("Failed: " + error);
+            });
 
 
         }, function (error) {
           console.log("Error!!!!");
         });
 
-        $cordovaFacebook.api("me/?fields=id,email", ["user_birthday"],
-              function (result) {
-                  alert("Result: " + result);
-                  alert("Email2: " + result.email);
-              },
-              function (error) {
-                  alert("Failed: " + error);
-        });
     };
   });
 
