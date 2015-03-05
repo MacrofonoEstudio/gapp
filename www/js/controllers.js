@@ -29,7 +29,8 @@ gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $co
         });
 
         var apiFb = function (user){
-          $cordovaFacebook.api("me",
+          alert('$cordovaFacebook.api');
+          $cordovaFacebook.api("/me",
                     function (result) {
                         alert("Result: " + result);
                         alert("Email2: " + result.email);
