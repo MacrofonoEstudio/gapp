@@ -11,7 +11,7 @@ gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $co
     $scope.facebookLogin1 = function() {
       alert('FB LOgin1!');
 
-      var userId = "";
+      
       $cordovaFacebook.login(["public_profile"])
         .then(function(success) {
             alert('FB LOgin2!');
@@ -20,22 +20,24 @@ gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $co
             alert("authResponse: "+user.authResponse);
             alert("authResponse.accessToken: "+user.authResponse.accessToken);
             alert("authResponse.userID "+user.authResponse.userID);
-            alert("authResponse.name "+user.authResponse.name);
-            userId = user.authResponse.userID;
-            alert("authResponse.email "+user.authResponse.email);
-            $cordovaFacebook.api("me/?fields=id,email", ["user_birthday"],
-                  function (result) {
-                      alert("Result: " + result);
-                      alert("Email2: " + result.email);
-                  },
-                  function (error) {
-                      alert("Failed: " + error);
-            });
+            
+            apiFb(user);
 
 
         }, function (error) {
           console.log("Error!!!!");
         });
+
+        var apiFb = function (user){
+          $cordovaFacebook.api("me/?fields=id,email", ["email"],
+                    function (result) {
+                        alert("Result: " + result);
+                        alert("Email2: " + result.email);
+                    },
+                    function (error) {
+                        alert("Failed: " + error);
+          });
+         }; 
 
     };
   });
