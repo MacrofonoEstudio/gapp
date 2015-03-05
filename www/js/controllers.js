@@ -30,13 +30,14 @@ gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $co
 
         var apiFb = function (user){
           alert('$cordovaFacebook.api');
-          $cordovaFacebook.api("/me",
-                    function (result) {
-                        alert("Result: " + result);
-                        alert("Email2: " + result.email);
-                    },
-                    function (error) {
-                        alert("Failed: " + error);
+          $cordovaFacebook.api("me",["public_profile"])
+          .then(function(success){
+            alert("Result: " + success);
+            alert("Name: " + success.name);
+            alert("Id: " + success.id);
+
+          },function(error){
+            alert('Error!')
           });
          }; 
 
