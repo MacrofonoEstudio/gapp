@@ -18,7 +18,9 @@ app.run(function($ionicPlatform, $cordovaFacebook) {
   });
 });
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider) {
+
+
 
   $stateProvider  
 
