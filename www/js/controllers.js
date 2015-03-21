@@ -1,4 +1,4 @@
-var gcontrollers = angular.module('garitoapp.controllers', ['ionic', 'ngCordova'])
+var gcontrollers = angular.module('garitoapp.controllers', ['ionic', 'ngCordova']);
 
 gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $cordovaFacebook) {
   
@@ -8,54 +8,43 @@ gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $co
 
   $ionicPlatform.ready(function() {
 
-    var fbStatus = '';
-
-    $cordovaFacebook.getLoginStatus(function(response){
-       if (response.status === 'connected') {
-            fbStatus = 'connected';
-            alert('Connected');
-       }
-    });
-
-
     $scope.facebookLogin1 = function() {
       alert('FB LOgin1!');
 
-      if(fbStatus != 'connected') {
-          $cordovaFacebook.login(["public_profile"])
-            .then(function(success) {
-                alert('FB LOgin2!');
-                var user = success;
-                // console.log(user.email);
-                alert("authResponse: "+user.authResponse);
-                alert("authResponse.accessToken: "+user.authResponse.accessToken);
-                alert("authResponse.userID "+user.authResponse.userID);
-                
-                apiFb(user);
+      
+      $cordovaFacebook.login(["public_profile"])
+        .then(function(success) {
+            alert('FB LOgin2!');
+            var user = success;
+            // console.log(user.email);
+            alert("authResponse: "+user.authResponse);
+            alert("authResponse.accessToken: "+user.authResponse.accessToken);
+            alert("authResponse.userID "+user.authResponse.userID);
+            
+            apiFb(user);
 
 
-            }, function (error) {
-              console.log("Error!!!!");
-            });
+        }, function (error) {
+          console.log("Error!!!!");
+        });
 
-            var apiFb = function (user){
-              alert('$cordovaFacebook.api');
-              $cordovaFacebook.api("me",["public_profile"])
-              .then(function(success){
-                alert("Result: " + success);
-                alert("Name: " + success.name);
-                alert("Id: " + success.id);
+        var apiFb = function (user){
+          alert('$cordovaFacebook.api');
+          $cordovaFacebook.api("me",["public_profile"])
+          .then(function(success){
+            alert("Result: " + success);
+            alert("Name: " + success.name);
+            alert("Id: " + success.id);
 
-              },function(error){
-                alert('Error!')
-              });
-             };
-         }; // Fin if      
-         else {
-            alert('Else!');
-         }
+          },function(error){
+            alert('Error!');
+          });
+         }; 
+
     };
-  });  
+  });
+
+  
 
 });
 
@@ -82,7 +71,7 @@ gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialo
                 "badge": "true",
                 "sound": "true",
                 "alert": "true"
-            }
+            };
         }
 
         $cordovaPush.register(config).then(function (result) {
@@ -96,9 +85,9 @@ gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialo
                 storeDeviceToken("ios");
             }
         }, function (err) {
-            console.log("Register error " + err)
+            console.log("Register error " + err);
         });
-    }
+    };
 
     // Notification Received
     $scope.$on('$cordovaPush:notificationReceived', function (event, notification) {
@@ -110,7 +99,7 @@ gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialo
             handleIOS(notification);
             $scope.$apply(function () {
                 $scope.notifications.push(JSON.stringify(notification.alert));
-            })
+            });
         }
     });
 
@@ -127,7 +116,7 @@ gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialo
             $cordovaDialogs.alert(notification.message, "Push Notification Received");
             $scope.$apply(function () {
                 $scope.notifications.push(JSON.stringify(notification.message));
-            })
+            });
         }
         else if (notification.event == "error")
             $cordovaDialogs.alert(notification.msg, "Push notification error event");
@@ -153,9 +142,9 @@ gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialo
 
             if (notification.badge) {
                 $cordovaPush.setBadgeNumber(notification.badge).then(function (result) {
-                    console.log("Set badge success " + result)
+                    console.log("Set badge success " + result);
                 }, function (err) {
-                    console.log("Set badge error " + err)
+                    console.log("Set badge error " + err);
                 });
             }
         }
@@ -183,7 +172,7 @@ gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialo
                 console.log("Token stored, device is successfully subscribed to receive push notifications.");
             })
             .error(function (data, status) {
-                console.log("Error storing device token." + data + " " + status)
+                console.log("Error storing device token." + data + " " + status);
             }
         );
     }
@@ -199,7 +188,7 @@ gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialo
                 console.log("Token removed, device is successfully unsubscribed and will not receive push notifications.");
             })
             .error(function (data, status) {
-                console.log("Error removing device token." + data + " " + status)
+                console.log("Error removing device token." + data + " " + status);
             }
         );
     }
@@ -219,7 +208,7 @@ gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialo
 //        }, function(err) {
 //            console.log("Unregister error " + err)
 //        });
-    }
+    };
 
 
-})
+});
