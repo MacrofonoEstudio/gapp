@@ -30,9 +30,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: "usersCtrl"
   })
 
+  .state('app.login', {
+    url: "/login",
+    templateUrl: "templates/login.html"
+  })
+
   .state('app.home', {
     url: "/home",
-    templateUrl: "templates/login.html"
+    templateUrl: "templates/home.html"
   })
 
   .state('app.detail', {

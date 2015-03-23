@@ -8,17 +8,15 @@ gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $co
 
   $ionicPlatform.ready(function() {
 
-    $scope.facebookStatus = function() {
-        $cordovaFacebook.getLoginStatus().then(function(response){
-           if (response.status === 'connected') {
-                fbStatus = 'connected';
-                alert('Connected');
-           };
-        }, function (error){
-            console.log(error);    
-        });
-    };    
-        
+    $cordovaFacebook.getLoginStatus().then(function(response){
+       if (response.status === 'connected') {
+            fbStatus = 'connected';
+            alert('Connected');
+            $state.go('app.detail');
+       };
+    }, function (error){
+        console.log(error);    
+    });
 
     $scope.facebookLogin1 = function() {
       alert('FB LOgin1!');
