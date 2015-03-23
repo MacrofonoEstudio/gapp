@@ -1,6 +1,6 @@
 var gcontrollers = angular.module('garitoapp.controllers', ['ionic', 'ngCordova']);
 
-gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $cordovaFacebook) {
+gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook) {
   
   $http.jsonp('http://fideliapp1.herokuapp.com/jsonp?callback=JSON_CALLBACK').success(function(data) {
     $scope.users = data;
@@ -10,7 +10,6 @@ gcontrollers.controller('usersCtrl', function($scope, $http, $ionicPlatform, $co
 
     $cordovaFacebook.getLoginStatus().then(function(response){
        if (response.status === 'connected') {
-            fbStatus = 'connected';
             alert('Connected');
             $state.go('app.detail');
        };
