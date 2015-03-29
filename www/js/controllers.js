@@ -21,6 +21,7 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
         .then(function(user) {
             //alert('FB LOgin2!');
             var userId = user.userID;
+            alert(userId);
 
             gusers.show(userId, function(response){
                 alert(response);
