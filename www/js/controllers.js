@@ -26,9 +26,13 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
             alert('FB LOgin2!');
             var user = success;
             // console.log(user.email);
-            alert("authResponse: "+user.authResponse);
-            alert("authResponse.accessToken: "+user.authResponse.accessToken);
-            alert("authResponse.userID "+user.authResponse.userID);
+            //alert("authResponse: "+user.authResponse);
+            //alert("authResponse.accessToken: "+user.authResponse.accessToken);
+            //alert("authResponse.userID "+user.authResponse.userID);
+
+            for (property in success){
+                alert(property);
+            };
             
             apiFb(user);
 
@@ -44,9 +48,9 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
             for (property in success){
                 alert(property);
             };
-            alert("Result: " + success);
-            alert("Name: " + success.name);
-            alert("Id: " + success.id);
+            //alert("Result: " + success);
+            //alert("Name: " + success.name);
+            //alert("Id: " + success.id);
 
           },function(error){
             alert('Error!');
