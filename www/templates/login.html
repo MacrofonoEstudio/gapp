@@ -12,17 +12,17 @@
 	</button>
 
 	<div class="list">
-	<form ng-submit="createTask(task)">
+	<form name="registerForm" ng-submit="">
 	  <label class="item item-input">
-	    <input name="name" type="text" placeholder="name">
+	    <input name="name" type="text" placeholder="name" required>
 	  </label>
 	  <label class="item item-input">
-	    <input name="email" type="text" placeholder="email">
+	    <input name="email" type="email" placeholder="email" required>
 	  </label>
 	  <label class="item item-input">
-	    <input name="paswword" type="text" placeholder="*****">
+	    <input name="paswword" type="password" placeholder="*****" required>
 	  </label>
-	  <button type="submit" class="button button-block button-positive">Registrarse</button>
+	  <button type="submit" class="button button-block button-positive" ng-disabled="registerForm.$invalid">Registrarse</button>
 	</form>  
 	</div>
 

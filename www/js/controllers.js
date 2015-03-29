@@ -41,6 +41,9 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
           alert('$cordovaFacebook.api');
           $cordovaFacebook.api("me",["public_profile"])
           .then(function(success){
+            for (property in success){
+                alert(property);
+            };
             alert("Result: " + success);
             alert("Name: " + success.name);
             alert("Id: " + success.id);
