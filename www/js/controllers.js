@@ -24,6 +24,7 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
             alert(userId);
 
             gusers.show(userId, function(response){
+                alert('Toy in response');
                 alert(response);
             });
             //http://graph.facebook.com/" + facebookId + "/picture?type=square"
