@@ -1,56 +1,51 @@
-var gcontrollers = angular.module('garitoapp.controllers', ['ionic', 'ngCordova']);
+var gcontrollers = angular.module('gcontrollers', ['ionic', 'ngCordova', 'gservices']);
 
-gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook) {
+gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook, gusers {
   
-  $http.jsonp('http://fideliapp1.herokuapp.com/jsonp?callback=JSON_CALLBACK').success(function(data) {
-    $scope.users = data;
-  });
-
   $ionicPlatform.ready(function() {
 
     $cordovaFacebook.getLoginStatus().then(function(response){
        if (response.status === 'connected') {
+            //var useriId = authResponse.userID;
+
             alert('Connected');
-            $state.go('app.detail');
+            $state.go('app.home');
        };
     }, function (error){
         console.log(error);    
     });
 
-    $scope.facebookLogin1 = function() {
-      alert('FB LOgin1!');
-
+    $scope.facebookLogin = function() {
+      //alert('FB LOgin1!');
       
       $cordovaFacebook.login(["public_profile"])
-        .then(function(success) {
-            alert('FB LOgin2!');
-            var user = success;
+        .then(function(user) {
+            //alert('FB LOgin2!');
+            var userId = user.userID;
+
+            gusers.show(userId, function(response){
+                alert(response);
+            });
+            //http://graph.facebook.com/" + facebookId + "/picture?type=square"
             // console.log(user.email);
             //alert("authResponse: "+user.authResponse);
             //alert("authResponse.accessToken: "+user.authResponse.accessToken);
-            //alert("authResponse.userID "+user.authResponse.userID);
-
-            for (property in success){
-                alert(property);
-            };
-            
-            apiFb(user);
-
+            //alert("authResponse.userID "+user.authResponse.userID);                        
+            //apiFb(user);
 
         }, function (error) {
           console.log("Error!!!!");
         });
 
         var apiFb = function (user){
-          alert('$cordovaFacebook.api');
+          //alert('$cordovaFacebook.api');
           $cordovaFacebook.api("me",["public_profile"])
           .then(function(success){
-            for (property in success){
-                alert(property);
-            };
+            
             //alert("Result: " + success);
             //alert("Name: " + success.name);
             //alert("Id: " + success.id);
+            
 
           },function(error){
             alert('Error!');
