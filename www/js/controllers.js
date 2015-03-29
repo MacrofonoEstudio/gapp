@@ -20,7 +20,7 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
       $cordovaFacebook.login(["public_profile"])
         .then(function(user) {
             //alert('FB LOgin2!');
-            var userId = user.userID;
+            var userId = 5511b64e2bf2821100c37f78 //user.userID;
             alert(userId);
 
             gusers.show(userId, function(response){
