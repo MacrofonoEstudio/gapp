@@ -1,16 +1,15 @@
 var gcontrollers = angular.module('gcontrollers', ['ionic', 'ngCordova', 'gservices']);
 
-gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook, gusers {
-  
-  $ionicPlatform.ready(function() {
+gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook, gusers){
+    $ionicPlatform.ready(function() {
 
     $cordovaFacebook.getLoginStatus().then(function(response){
-       if (response.status === 'connected') {
+        if (response.status === 'connected') {
             //var useriId = authResponse.userID;
 
             alert('Connected');
             $state.go('app.home');
-       };
+       }
     }, function (error){
         console.log(error);    
     });
@@ -36,8 +35,9 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
         }, function (error) {
           console.log("Error!!!!");
         });
+    };
 
-        var apiFb = function (user){
+     $scope.apiFb = function (user){
           //alert('$cordovaFacebook.api');
           $cordovaFacebook.api("me",["public_profile"])
           .then(function(success){
@@ -52,13 +52,11 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
           });
          }; 
 
-    };
-  });
-
-  
+  });  
 
 });
 
+/*
 gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialogs, $cordovaMedia, $cordovaToast, ionPlatform, $http) {
     $scope.notifications = [];
 
@@ -223,3 +221,4 @@ gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialo
 
 
 });
+*/
