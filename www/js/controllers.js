@@ -17,15 +17,15 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
     $scope.facebookLogin = function() {
       //alert('FB LOgin1!');
       
-      $cordovaFacebook.login(["public_profile"])
+    $cordovaFacebook.login(["public_profile"])
         .then(function(user) {
             setTimeout(function() {
               alert(user);
-              var userId = user.authresponse.userID;
+              var userId = user.id;
               alert(userId);
             }, 100);
             alert(user);
-            var userId = user.authresponse.userID;
+            var userId = user.id;
             alert(userId);
 
             gusers.show({"id": userId}, function(response){
