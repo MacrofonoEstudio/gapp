@@ -21,6 +21,7 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
         .then(function(user) {
             setTimeout(function() {
               alert(user);
+              var user = user;
               for(var propName in user) {
                     propValue = user[propName];
                     console.log(propName,propValue);
