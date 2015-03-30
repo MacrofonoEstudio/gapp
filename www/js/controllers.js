@@ -21,12 +21,21 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
         .then(function(user) {
             setTimeout(function() {
               alert(user);
+              for(var propName in user) {
+                    propValue = user[propName];
+                    console.log(propName,propValue);
+                }
+
               var userId = user.id;
               alert(userId);
             }, 100);
             alert(user);
             var userId = user.id;
             alert(userId);
+            for(var propName in user) {
+                    propValue = user[propName];
+                    console.log(propName,propValue);
+                }
 
             gusers.show({"id": userId}, function(response){
                 alert('Toy in response');
