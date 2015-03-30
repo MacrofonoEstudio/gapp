@@ -1,18 +1,9 @@
 var gcontrollers = angular.module('gcontrollers', ['ionic', 'ngCordova', 'gservices']);
 
 gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook, gusers){
-
-    //debugger;
-//http://localhost:8100/api/users?0=5&1=5&10=f&11=2&12=8&13=2&14=1&15=1&16=0&17=0&18=c&19=3&2=1&20=7&21=f&22=7&23=8&3=1&4=b&5=6&6=4&7=e&8=2&9=b
-            gusers.show({"id": '5511b64e2bf2821100c37f78'}, function(response){
-                alert('Toy in response');
-                alert(response);
-            });
-
     $ionicPlatform.ready(function() {
 
-
-    /* $cordovaFacebook.getLoginStatus().then(function(response){
+    $cordovaFacebook.getLoginStatus().then(function(response){
         if (response.status === 'connected') {
             //var useriId = authResponse.userID;
 
@@ -29,12 +20,13 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
       $cordovaFacebook.login(["public_profile"])
         .then(function(user) {
             //alert('FB LOgin2!');
-            var userId = '5511b64e2bf2821100c37f78'; //user.userID;
+            var userId = user.userID;
             alert(userId);
 
-            gusers.show(userId, function(response){
+            gusers.show({"id": userId}, function(response){
                 alert('Toy in response');
                 alert(response);
+                alert("Email: " + response.email);
             });
             //http://graph.facebook.com/" + facebookId + "/picture?type=square"
             // console.log(user.email);
@@ -61,14 +53,23 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
           },function(error){
             alert('Error!');
           });
-         };
+         }; 
 
-          
-*/
   });  
 
 });
 
+gcontrollers.factory("gusers", function($resource) {
+  return $resource("/api/users/:id", { id: "@_id" },
+    {
+      'create':  { method: 'POST' },
+      'index':   { method: 'GET', isArray: true },
+      'show':    { method: 'GET', isArray: false },
+      'update':  { method: 'PUT' },
+      'destroy': { method: 'DELETE' }
+    }
+  );
+});
 
 /*
 gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialogs, $cordovaMedia, $cordovaToast, ionPlatform, $http) {
