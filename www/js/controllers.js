@@ -20,23 +20,12 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
     $cordovaFacebook.login(["public_profile"])
         .then(function(user) {
             setTimeout(function() {
-              alert(user);
-              var user = user;
-              for(var propName in user) {
-                    propValue = user[propName];
-                    console.log(propName,propValue);
-                }
-
-              var userId = user.id;
-              alert(userId);
+              var userId = user.userID;
+              alert('User1: ' + userId);
             }, 100);
-            alert(user);
-            var userId = user.id;
-            alert(userId);
-            for(var propName in user) {
-                    propValue = user[propName];
-                    console.log(propName,propValue);
-                }
+
+            var userId = user.userID;
+            alert('User2' + userId);
 
             gusers.show({"id": userId}, function(response){
                 alert('Toy in response');
