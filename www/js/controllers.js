@@ -19,10 +19,13 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
       
     $cordovaFacebook.login(["public_profile"])
         .then(function(user) {
-            setTimeout(function() {
-              var userId = user.userID;
-              alert('User1: ' + userId);
-            }, 100);
+            
+            alert(user.authResponse);
+            alert(user.accessToken);
+            alert(user.userID);
+
+            alert(user.authResponse.accessToken);
+            alert(user.authResponse.userID);
 
             var userId = user.userID;
             alert('User2' + userId);
