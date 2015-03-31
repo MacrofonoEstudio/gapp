@@ -27,7 +27,7 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
             alert(user.authResponse.accessToken);
             alert(user.authResponse.userID);
 
-            var userId = user.userID;
+            var userId = user.authResponse.userID;
             alert('User2' + userId);
 
             gusers.show({"id": userId}, function(response){
