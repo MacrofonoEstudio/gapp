@@ -25,15 +25,17 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
             var userId = user.authResponse.userID;
             var userToken = user.authResponse.accessToken;
 
-            gusers.show({fbId: userId}, function(response){
+            gusers.show({fbId: userId}, function(result){
 
                 alert('Toy in response');
                 alert(response);
                 alert("Email: " + response.email);
 
-                if (response != null){
-                    alert('Not Null');
-                    $scope.user = response;
+
+
+                if (result){
+                    alert('Result');
+                    $scope.user = result;
                 } else {
 
                     $cordovaFacebook.api("me",["public_profile"])
