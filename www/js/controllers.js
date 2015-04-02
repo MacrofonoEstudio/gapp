@@ -19,18 +19,11 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
       
     $cordovaFacebook.login(["public_profile"])
         .then(function(user) {
-            
-            alert(user.authResponse);
-            alert(user.accessToken);
-            alert(user.userID);
-
-            alert(user.authResponse.accessToken);
-            alert(user.authResponse.userID);
 
             var userId = user.authResponse.userID;
             alert('User2' + userId);
 
-            gusers.show({"id": userId}, function(response){
+            gusers.show({'id': '5511b68d2bf2821100c37f79'}, function(response){
                 alert('Toy in response');
                 alert(response);
                 alert("Email: " + response.email);
