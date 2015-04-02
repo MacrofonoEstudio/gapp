@@ -25,13 +25,14 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
             var userId = user.authResponse.userID;
             var userToken = user.authResponse.accessToken;
 
-            gusers.show({id: userId}, function(response){
+            gusers.show({fbId: userId}, function(response){
 
                 alert('Toy in response');
                 alert(response);
                 alert("Email: " + response.email);
 
                 if (response != null){
+                    alert('Not Null');
                     $scope.user = response;
                 } else {
 
@@ -41,8 +42,7 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
                         //alert("Result: " + success);
                         //alert("Name: " + success.name);
                         //alert("Id: " + success.id);
-                        gusers.create({ fbId: userProfile.id, name: userProfile.name, email: userProfile.email, token: userToken } 
-                        );
+                        gusers.create({ fbId: userProfile.id, name: userProfile.name, email: userProfile.email, token: userToken });
 
                       },function(error){
                         alert('Error!');
