@@ -1,7 +1,7 @@
 angular.module('gapp.gservices', ['ngResource'])
 
 .factory("gusers", function($resource) {
-  return $resource("https://sessions2.herokuapp.com/api/users/:id", { id: "@_id" },
+  return $resource("https://sessions2.herokuapp.com/api/users/:fbId",
     {
       'create':  { method: 'POST' },
       'index':   { method: 'GET', isArray: true },
