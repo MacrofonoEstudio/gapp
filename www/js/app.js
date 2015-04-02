@@ -20,7 +20,6 @@ app.run(function($ionicPlatform, $cordovaFacebook) {
 app.config(function($stateProvider, $urlRouterProvider) {
 
 
-
   $stateProvider  
 
   .state('app', {

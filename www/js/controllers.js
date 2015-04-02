@@ -3,7 +3,11 @@ var gcontrollers = angular.module('gcontrollers', ['ionic', 'ngCordova', 'gservi
 gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook, gusers){
     $ionicPlatform.ready(function() {
 
-    $cordovaFacebook.getLoginStatus().then(function(response){
+        gusers.index(function(data) {
+                alert(data);
+            });
+
+    /* $cordovaFacebook.getLoginStatus().then(function(response){
         if (response.status === 'connected') {
             //var useriId = authResponse.userID;
 
@@ -23,6 +27,10 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
             var userId = user.authResponse.userID;
             alert('User2' + userId);
 
+            gusers.index(function(data) {
+                alert(data);
+            });
+
             gusers.show({'id': '5511b68d2bf2821100c37f79'}, function(response){
                 alert('Toy in response');
                 alert(response);
@@ -40,6 +48,8 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
         });
     };
 
+
+
      $scope.apiFb = function (user){
           //alert('$cordovaFacebook.api');
           $cordovaFacebook.api("me",["public_profile"])
@@ -53,23 +63,14 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
           },function(error){
             alert('Error!');
           });
-         }; 
+         };
+      */   
 
   });  
 
 });
 
-gcontrollers.factory("gusers", function($resource) {
-  return $resource("/api/users/:id", { id: "@_id" },
-    {
-      'create':  { method: 'POST' },
-      'index':   { method: 'GET', isArray: true },
-      'show':    { method: 'GET', isArray: false },
-      'update':  { method: 'PUT' },
-      'destroy': { method: 'DELETE' }
-    }
-  );
-});
+
 
 /*
 gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialogs, $cordovaMedia, $cordovaToast, ionPlatform, $http) {
