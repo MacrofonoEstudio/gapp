@@ -23,13 +23,8 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
         .then(function(user) {
 
             var userId = user.authResponse.userID;
-            alert('User2' + userId);
 
-            gusers.index(function(data) {
-                alert(data);
-            });
-
-            gusers.show({id: '5511b68d2bf2821100c37f79'}, function(response){
+            gusers.show({id: userId}, function(response){
                 alert('Toy in response');
                 alert(response);
                 alert("Email: " + response.email);
