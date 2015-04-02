@@ -28,8 +28,8 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
             gusers.show({fbId: userId}, function(result){
 
                 alert('Toy in response');
-                alert(response);
-                alert("Email: " + response.email);
+                alert(result);
+                alert("Email: " + result.email);
 
 
 
