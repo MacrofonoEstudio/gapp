@@ -3,11 +3,9 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
 .controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook, gusers){
     $ionicPlatform.ready(function() {
 
-        gusers.index(function(data) {
-                alert(data);
-            });
+        
 
-    /* $cordovaFacebook.getLoginStatus().then(function(response){
+    $cordovaFacebook.getLoginStatus().then(function(response){
         if (response.status === 'connected') {
             //var useriId = authResponse.userID;
 
@@ -31,7 +29,7 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
                 alert(data);
             });
 
-            gusers.show({'id': '5511b68d2bf2821100c37f79'}, function(response){
+            gusers.show({'_id': '5511b68d2bf2821100c37f79'}, function(response){
                 alert('Toy in response');
                 alert(response);
                 alert("Email: " + response.email);
@@ -64,7 +62,6 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
             alert('Error!');
           });
          };
-      */   
 
   });  
 
