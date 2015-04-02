@@ -23,12 +23,35 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
         .then(function(user) {
 
             var userId = user.authResponse.userID;
+            var userToken = user.authResponse.accessToken;
 
             gusers.show({id: userId}, function(response){
+
                 alert('Toy in response');
                 alert(response);
                 alert("Email: " + response.email);
+
+                if (response != null){
+                    $scope.user = response;
+                } else {
+
+                    $cordovaFacebook.api("me",["public_profile"])
+                      .then(function(userProfile){
+                        alert('Toy in api: '+ userProfile.name);
+                        //alert("Result: " + success);
+                        //alert("Name: " + success.name);
+                        //alert("Id: " + success.id);
+                        gusers.create({ fbId: userProfile.id, name: userProfile.name, email: userProfile.email, token: userToken } 
+                        );
+
+                      },function(error){
+                        alert('Error!');
+                      });
+                    
+                };
+               
             });
+
             //http://graph.facebook.com/" + facebookId + "/picture?type=square"
             // console.log(user.email);
             //alert("authResponse: "+user.authResponse);
