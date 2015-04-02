@@ -1,6 +1,6 @@
-var gservices = angular.module('gservices', ['ngResource']);
+angular.module('gapp.gservices', ['ngResource'])
 
-gservices.factory("gusers", function($resource) {
+.factory("gusers", function($resource) {
   return $resource("https://sessions2.herokuapp.com/api/users/:id", { id: "@_id" },
     {
       'create':  { method: 'POST' },

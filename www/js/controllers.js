@@ -1,6 +1,6 @@
-var gcontrollers = angular.module('gcontrollers', ['ionic', 'ngCordova', 'gservices']);
+angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
 
-gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook, gusers){
+.controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook, gusers){
     $ionicPlatform.ready(function() {
 
         gusers.index(function(data) {
@@ -73,7 +73,7 @@ gcontrollers.controller('usersCtrl', function($scope, $state, $http, $ionicPlatf
 
 
 /*
-gcontrollers.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialogs, $cordovaMedia, $cordovaToast, ionPlatform, $http) {
+.controller('pushCtrl', function($scope, $cordovaPush, $cordovaDialogs, $cordovaMedia, $cordovaToast, ionPlatform, $http) {
     $scope.notifications = [];
 
     // call to register automatically upon device ready
