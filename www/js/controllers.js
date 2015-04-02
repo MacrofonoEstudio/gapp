@@ -29,7 +29,7 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
                 alert(data);
             });
 
-            gusers.show({'email': 'mymail@gmail.com'}, function(response){
+            gusers.show({email: 'mymail@gmail.com'}, function(response){
                 alert('Toy in response');
                 alert(response);
                 alert("Email: " + response.email);
