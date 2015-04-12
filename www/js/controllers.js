@@ -3,9 +3,29 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
 .controller('usersCtrl', function($scope, $state, $http, $ionicPlatform, $cordovaFacebook, gusers){
     $ionicPlatform.ready(function() {
 
-        
+        gusers.show({fbId: 'asdgw324325ew'}, function(result){
 
-    $cordovaFacebook.getLoginStatus().then(function(response){
+                alert('Toy in response');
+                alert(result);
+
+                /* $scope.user.$promise.then(function(data) {
+                       console.log(data);
+                   });
+
+                  */ 
+
+                for (var prop in result) {
+                    if (result.hasOwnProperty(prop)) {
+                        alert("the propertie (" + prop + ") is here for sure. Value: " + prop[name]);
+                    }
+                    else {
+                        alert(prop); // toString or something else
+                    }
+                }
+            });       
+
+
+    /* $cordovaFacebook.getLoginStatus().then(function(response){
         if (response.status === 'connected') {
             //var useriId = authResponse.userID;
 
@@ -17,10 +37,11 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
     });
 
     $scope.facebookLogin = function() {
-      //alert('FB LOgin1!');
       
     $cordovaFacebook.login(["public_profile"])
         .then(function(user) {
+
+            alert();
 
             var userId = user.authResponse.userID;
             var userToken = user.authResponse.accessToken;
@@ -29,7 +50,7 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
 
                 alert('Toy in response');
                 alert(result);
-                alert("Email: " + result.email);
+                alert("Email: " + result['email']);
 
 
 
@@ -82,6 +103,8 @@ angular.module('gapp.gcontrollers', ['ionic', 'ngCordova', 'gapp.gservices'])
             alert('Error!');
           });
          };
+
+         */
 
   });  
 
